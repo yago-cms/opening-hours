@@ -1,5 +1,5 @@
 @php
-if (!$config) {
+if (!(array)$config) {
     return;
 }
 @endphp
@@ -7,7 +7,7 @@ if (!$config) {
 <div class="opening-hours-today">
     @if ($config->showMessage)
         <p class="opening-hours-today__message">
-            @if ($openingHourExceptionToday->is_closed || $openingHoursToday->is_closed)
+            @if (($openingHourExceptionToday && $openingHourExceptionToday->is_closed) || $openingHoursToday->is_closed)
                 {{ $config->messageClosed }}
             @else
                 {{ $config->messageOpen }}
